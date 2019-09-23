@@ -90,6 +90,7 @@ import sun.reflect.Reflection;
 import sun.reflect.misc.ConstructorUtil;
 import sun.reflect.misc.MethodUtil;
 import sun.reflect.misc.ReflectUtil;
+import xdean.fastfxml.FXMLCache.ClassLoaderCache;
 
 /**
  * Loads an object hierarchy from an XML document.
@@ -1771,6 +1772,7 @@ public class FXMLLoader {
   private final LinkedList<FXMLLoader> loaders;
 
   private ClassLoader classLoader = defaultClassLoader;
+  private ClassLoaderCache classLoaderCache = FXMLCache.getContext().getClassLoaderCache(classLoader);
   private boolean staticLoad = false;
   private LoadListener loadListener = null;
 
@@ -2320,6 +2322,7 @@ public class FXMLLoader {
     }
 
     this.classLoader = classLoader;
+    this.classLoaderCache = FXMLCache.getContext().getClassLoaderCache(classLoader);
 
     clearImports();
   }
@@ -2861,17 +2864,7 @@ public class FXMLLoader {
 
       if (type == null) {
         // The class has not been loaded yet; look it up
-        for (String packageName : packages) {
-          try {
-            type = loadTypeForPackage(packageName, name);
-          } catch (ClassNotFoundException exception) {
-            // No-op
-          }
-
-          if (type != null) {
-            break;
-          }
-        }
+        type = classLoaderCache.findClass(packages, name);
 
         if (type != null) {
           classes.put(name, type);

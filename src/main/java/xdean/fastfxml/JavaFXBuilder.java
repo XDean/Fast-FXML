@@ -20,7 +20,7 @@ import sun.reflect.misc.MethodUtil;
 /**
  * JavaFX builder.
  */
-@SuppressWarnings({ "restriction", "unchecked" })
+@SuppressWarnings({"unchecked" })
 final class JavaFXBuilder {
   private static final Object[] NO_ARGS = {};
   private static final Class<?>[] NO_SIG = {};

@@ -53,7 +53,7 @@ import sun.reflect.misc.ConstructorUtil;
  *
  * @since JavaFX 2.0
  */
-@SuppressWarnings({ "restriction", "unchecked", "rawtypes" })
+@SuppressWarnings({"unchecked", "rawtypes" })
 public final class JavaFXBuilderFactory implements BuilderFactory {
   private final JavaFXBuilder NO_BUILDER = new JavaFXBuilder();
 
