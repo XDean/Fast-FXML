@@ -28,6 +28,8 @@ import java.io.IOException;
 
 import org.junit.Test;
 
+import xdean.fastfxml.FXMLLoader;
+
 public class CompareVersionsTest {
   @Test
   public void testCompareJFXVersions() throws IOException {
