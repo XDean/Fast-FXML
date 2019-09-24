@@ -3,13 +3,9 @@ package xdean.fastfxml.benchmark;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
-import org.junit.Test;
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.Mode;
 import org.openjdk.jmh.annotations.OutputTimeUnit;
-import org.openjdk.jmh.annotations.Scope;
-import org.openjdk.jmh.annotations.Setup;
-import org.openjdk.jmh.annotations.State;
 import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
@@ -19,15 +15,18 @@ import com.sun.javafx.application.PlatformImpl;
 
 import xdean.fastfxml.FXMLLoader;
 
-@State(Scope.Benchmark)
 public class FXMLLoaderBenchmark {
-  @Test
-  public void runBenchmarks() throws Exception {
+  static {
+    PlatformImpl.startup(() -> {
+    });
+  }
+
+  public static void main(String[] args) throws Exception {
     Options options = new OptionsBuilder()
-        .include(this.getClass().getName() + ".*")
+        .include(FXMLLoaderBenchmark.class.getName() + ".*")
         .mode(Mode.AverageTime)
         .warmupTime(TimeValue.seconds(1))
-        .warmupIterations(1)
+        .warmupIterations(2)
         .threads(1)
         .measurementIterations(5)
         .measurementTime(TimeValue.seconds(1))
@@ -37,12 +36,6 @@ public class FXMLLoaderBenchmark {
         .build();
 
     new Runner(options).run();
-  }
-
-  @Setup
-  public void setup() {
-    PlatformImpl.startup(() -> {
-    });
   }
 
   @Benchmark

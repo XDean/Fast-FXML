@@ -27,13 +27,6 @@
       <version>1.21</version>
       <scope>test</scope>
     </dependency>
-    <dependency>
-      <groupId>java</groupId>
-      <artifactId>rt</artifactId>
-      <version>HEAD</version>
-      <scope>system</scope>
-      <systemPath>${java.home}/lib/rt.jar</systemPath>
-    </dependency>
   </dependencies>
 
   <build>
@@ -42,9 +35,7 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
-          <compilerArgs>
-            <arg>-XDignore.symbol.file</arg>
-          </compilerArgs>
+          <compilerArgument>-XDignore.symbol.file</compilerArgument>
           <fork>true</fork>
         </configuration>
       </plugin>

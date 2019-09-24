@@ -37,8 +37,7 @@ public class RT_23519Test {
 
   @Test
   public void testId() throws IOException {
-    PlatformImpl.startup(() -> {
-    });
+    PlatformImpl.startup(()->{});
     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("rt_23519.fxml"));
     fxmlLoader.load();
 

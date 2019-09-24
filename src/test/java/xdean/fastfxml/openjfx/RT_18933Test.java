@@ -26,12 +26,15 @@ import java.io.IOException;
 
 import org.junit.Test;
 
+import com.sun.javafx.application.PlatformImpl;
+
 import javafx.fxml.LoadException;
 import xdean.fastfxml.FXMLLoader;
 
 public class RT_18933Test {
   @Test(expected = LoadException.class)
   public void testDefaultListProperty() throws IOException {
+    PlatformImpl.startup(()->{});
     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("rt_18933.fxml"));
     fxmlLoader.load();
   }
