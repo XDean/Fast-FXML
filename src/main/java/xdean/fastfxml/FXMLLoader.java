@@ -69,7 +69,6 @@ import javax.xml.stream.XMLStreamReader;
 import javax.xml.stream.util.StreamReaderDelegate;
 
 import com.sun.javafx.beans.IDProperty;
-import com.sun.javafx.fxml.BeanAdapter;
 import com.sun.javafx.fxml.LoadListener;
 import com.sun.javafx.fxml.ParseTraceElement;
 import com.sun.javafx.fxml.PropertyNotFoundException;
